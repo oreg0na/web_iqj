@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Auth from './components/Auth/Auth';
+import NotFound from "./components/Pages/404Page";
 import './App.css';
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="IQJ - Admin panel">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/">
+                <Route path="/auth" element={<Auth/>}></Route>
+                <Route index element={<Navigate replace to="/auth" />} />
+                <Route path="*" element={<NotFound/>}></Route>
+            </Route>
+        )
+    );
+    return (
+        <div className="app">
+            <RouterProvider router={router}/>
+        </div>
+    );
 }
 
 export default App;
