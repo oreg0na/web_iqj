@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../assets/css/Auth.css'
 
-const Auth: React.FC = () => {
+const Login: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
 
     return (
@@ -27,4 +27,4 @@ const Auth: React.FC = () => {
     );
 }
 
-export default Auth;
+export default Login;
