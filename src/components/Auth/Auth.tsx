@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FocusEvent, useEffect, useCallback } from 'react';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Notification from '../lib/Notification/Notification';
 import './Auth.scss';
 
 const Login: React.FC = () => {
@@ -11,30 +12,24 @@ const Login: React.FC = () => {
     const [formValid, setFormValid] = useState(false);
     const [notificationQueue, setNotificationQueue] = useState<string[]>([]);
     const [currentNotification, setCurrentNotification] = useState<string | null>(null);
-    const [notificationClass, setNotificationClass] = useState('hide');
-    const notificationTimeout = 3000; // 3 секунды для отображения уведомления
 
     useEffect(() => {
         setFormValid(!emailError && !passwordError);
     }, [emailError, passwordError]);
 
+    useEffect(() => {
+        if (currentNotification === null && notificationQueue.length > 0) {
+            setCurrentNotification(notificationQueue.shift()!);
+        }
+    }, [currentNotification, notificationQueue]);
+
     const showNotification = useCallback((message: string) => {
         setNotificationQueue(prevQueue => [...prevQueue, message]);
     }, []);
 
-    useEffect(() => {
-        if (currentNotification === null && notificationQueue.length > 0) {
-            const message = notificationQueue.shift()!;
-            setCurrentNotification(message);
-            setNotificationClass('show');
-            setTimeout(() => {
-                setNotificationClass('hide');
-                setTimeout(() => {
-                    setCurrentNotification(null);
-                }, 500);
-            }, notificationTimeout);
-        }
-    }, [currentNotification, notificationQueue]);
+    const handleNotificationEnd = useCallback(() => {
+        setCurrentNotification(null);
+    }, []);
 
     const validateEmail = (email: string) => {
         const re =
@@ -86,11 +81,7 @@ const Login: React.FC = () => {
 
     return (
         <div className="container">
-            {currentNotification && (
-                <div className={`notification-alert ${notificationClass}`}>
-                    {currentNotification}
-                </div>
-            )}
+            <Notification message={currentNotification} onEnd={handleNotificationEnd} />
 
             <motion.div
                 className="toggle-container"
