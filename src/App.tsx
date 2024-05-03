@@ -1,5 +1,6 @@
 import React from 'react'
 import Login from './components/Auth/Auth'
+import News from './components/News/WriteNews'
 import NotFound from './components/Pages/404Page'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from 'react-router-dom'
 import './App.scss'
@@ -9,6 +10,7 @@ const App: React.FC = () => {
         createRoutesFromElements(
             <Route path='/'>
                 <Route path='/login' element={<Login />}></Route>
+                <Route path='/news' element={<News />}></Route>
                 <Route index element={<Navigate replace to='/login' />} />
                 <Route path='*' element={<NotFound />}></Route>
             </Route>
