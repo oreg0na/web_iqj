@@ -99,14 +99,14 @@ const Login: React.FC = () => {
 
             <div className="form-container sign-in">
                 <form>
-                    <h1>Войти</h1>
+                    <h1>Аутентификация</h1>
                     <input
                         onChange={(e) => emailHandler(e)}
                         value={email}
                         onBlur={(e) => blurHandler(e)}
                         name="email"
                         type="email"
-                        placeholder="Email"
+                        placeholder="Электронная почта"
                     />
                     <input
                         onChange={(e) => passwordHandler(e)}
@@ -118,7 +118,7 @@ const Login: React.FC = () => {
                     />
                     <a href="#">Забыли пароль?</a>
                     <button disabled={!formValid} type="submit">
-                        Sign In
+                        Войти
                     </button>
                 </form>
             </div>
