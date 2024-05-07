@@ -1,32 +1,32 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import './Notification.scss';
+import React, { useEffect, useState, useCallback } from 'react'
+import './Notification.scss'
 
 interface NotificationProps {
-    message: string | null;
-    onEnd: () => void;
-    timeout?: number;
+    message: string | null
+    onEnd: () => void
+    timeout?: number
 }
 
 const Notification: React.FC<NotificationProps> = ({ message, onEnd, timeout = 3000 }) => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false)
 
     useEffect(() => {
         if (message) {
-            setVisible(true);
+            setVisible(true)
             setTimeout(() => {
-                setVisible(false);
-                setTimeout(onEnd, 500); // Ожидаем завершения анимации
-            }, timeout);
+                setVisible(false)
+                setTimeout(onEnd, 500) // Ожидаем завершения анимации
+            }, timeout)
         }
-    }, [message, onEnd, timeout]);
+    }, [message, onEnd, timeout])
 
-    const notificationClass = visible ? 'show' : 'hide';
+    const notificationClass = visible ? 'show' : 'hide'
 
     return message ? (
         <div className={`notification-alert ${notificationClass}`}>
             {message}
         </div>
-    ) : null;
-};
+    ) : null
+}
 
-export default Notification;
+export default Notification
