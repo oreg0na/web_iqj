@@ -1,8 +1,8 @@
 import { useState, ChangeEvent, FocusEvent, useEffect, useCallback } from 'react'
 import React from 'react'
 import { motion } from 'framer-motion'
-import Notification from '../../components/lib/Notification/Notification'
-import './Auth.scss'
+import Notification from '../../components/Notification/Notification'
+import './AuthPage.scss'
 import { useDispatch } from 'react-redux'
 import { AppDispatch, useAppSelector } from '../../store/store'
 import { login } from '../../api/auth'
@@ -98,46 +98,48 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div className='container'>
-            <Notification message={currentNotification} onEnd={handleNotificationEnd} />
+        <div className='auth-page'>
+            <div className='container'>
+                <Notification message={currentNotification} onEnd={handleNotificationEnd} />
 
-            <motion.div
-                className='toggle-container'
-                initial={{ x: -100 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                <div className='toggle'>
-                    <div className='toggle-panel toggle-left'>
-                        <h1>С возвращением!</h1>
-                        <p>Введите логин и пароль для входа в Админ-панель IQJ</p>
+                <motion.div
+                    className='toggle-container'
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className='toggle'>
+                        <div className='toggle-panel toggle-left'>
+                            <h1>С возвращением!</h1>
+                            <p>Введите логин и пароль для входа в Админ-панель IQJ</p>
+                        </div>
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
 
-            <div className='form-container sign-in'>
-                <div className='sing-in-form'>
-                    <h1>Аутентификация</h1>
-                    <input
-                        onChange={(e) => emailHandler(e)}
-                        value={email}
-                        onBlur={(e) => blurHandler(e)}
-                        name='email'
-                        type='email'
-                        placeholder='Электронная почта'
-                    />
-                    <input
-                        onChange={(e) => passwordHandler(e)}
-                        value={password}
-                        onBlur={(e) => blurHandler(e)}
-                        name='password'
-                        type='password'
-                        placeholder='Пароль'
-                    />
-                    <a href='#'>Забыли пароль?</a>
-                    <button disabled={!formValid} onClick={loginHandler}>
-                        Войти
-                    </button>
+                <div className='form-container sign-in'>
+                    <div className='sing-in-form'>
+                        <h1>Аутентификация</h1>
+                        <input
+                            onChange={(e) => emailHandler(e)}
+                            value={email}
+                            onBlur={(e) => blurHandler(e)}
+                            name='email'
+                            type='email'
+                            placeholder='Электронная почта'
+                        />
+                        <input
+                            onChange={(e) => passwordHandler(e)}
+                            value={password}
+                            onBlur={(e) => blurHandler(e)}
+                            name='password'
+                            type='password'
+                            placeholder='Пароль'
+                        />
+                        <a href='#'>Забыли пароль?</a>
+                        <button disabled={!formValid} onClick={loginHandler}>
+                            Войти
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
