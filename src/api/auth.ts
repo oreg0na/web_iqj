@@ -11,7 +11,7 @@ type LoginResult = string
 
 export const login = createAsyncThunk('auth/login', async (data: LoginData, thunkAPI) => {
     try {
-        const response = await axios.post<LoginResult>('https://mireaiqj.ru:8443/sign-in', data)
+        const response = await axios.post<LoginResult>('https://mireaiqj.ru:8443/web_sign-in', data)
         thunkAPI.dispatch(setIsLogin(true))
         return thunkAPI.fulfillWithValue(response.data)
     } catch(error) {
