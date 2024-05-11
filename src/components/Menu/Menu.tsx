@@ -17,7 +17,7 @@ const Menu = () => {
                     <img/>
                     <span>Новости</span>
                 </div>
-                <div onClick={() => navigate('/panel/user')} className='menu-item'>
+                <div onClick={() => navigate('/panel/ad')} className='menu-item'>
                     <img/>
                     <span>Объявления</span>
                 </div>
