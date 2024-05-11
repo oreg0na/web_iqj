@@ -7,7 +7,7 @@
 
     .title {
         margin: 40px 0 50px 0;
-        font-family: Barlow;
+        font-family: Barlow, sans-serif;
         font-size: 42px;
         font-weight: 700;
         line-height: 50.4px;
@@ -24,10 +24,12 @@
             width: 250px;
             height: 55px;
             margin-top: 10px;
-            font-family: Barlow;
+            font-family: Barlow, sans-serif;
             font-size: 18px;
             font-weight: 500;
             line-height: 21.6px;
+            background-color: transparent; // Чтобы фон был прозрачным
+            color: #000; // Черный цвет текста
         }
         .menu-item-selected {
             font-weight: 700;
