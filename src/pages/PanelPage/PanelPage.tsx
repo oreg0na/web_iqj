@@ -2,14 +2,14 @@ import React from 'react'
 import Menu from '../../components/Menu/Menu'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import UserList from '../../components/UserList/UserList'
-import EditUser from '../../components/EditUser/EditUser'
+import UserList from '../../components/Users/UserList/UserList'
+import EditUser from '../../components/Users/EditUser/EditUser'
 
-import NewsList from '../../components/NewsList/NewsList'
-import EditNews from '../../components/EditNews/EditNews'
+import NewsList from '../../components/News/NewsList/NewsList'
+import EditNews from '../../components/News/EditNews/EditNews'
 
-import EditAd from '../../components/EditAd/EditAd'
-import AdList from '../../components/AdList/AdList'
+import EditAd from '../../components/Ad/EditAd/EditAd'
+import AdList from '../../components/Ad/AdList/AdList'
 
 import './PanelPage.scss'
 
