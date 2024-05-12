@@ -11,9 +11,9 @@ import EditNews from '../../components/News/EditNews/EditNews'
 import EditAd from '../../components/Ad/EditAd/EditAd'
 import AdList from '../../components/Ad/AdList/AdList'
 
-import SettingsIcon from './SettingsIcon.svg'
-import TemplateUserIcon from './TemplateUserIcon.jpg'
-import SearchIcon from './SearchIcon.svg'
+import SettingsIcon from './assets/SettingsIcon.svg'
+import TemplateUserIcon from './assets/TemplateUserIcon.jpg'
+import SearchIcon from './assets/SearchIcon.svg'
 
 import './PanelPage.scss'
 
