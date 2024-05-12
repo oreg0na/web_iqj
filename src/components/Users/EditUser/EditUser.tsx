@@ -1,7 +1,11 @@
-
+import './EditUser.scss'
 const EditUser = () => {
     return (
-        <div>EditUser</div>
+        <div className='user-edit-container'>
+            <div className='title-block'>
+                <span className='title'>Editing a user</span>
+            </div>
+        </div>
     )
 }
 
