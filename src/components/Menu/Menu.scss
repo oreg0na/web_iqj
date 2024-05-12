@@ -30,6 +30,10 @@
             line-height: 21.6px;
             background-color: transparent; // Чтобы фон был прозрачным
             color: #000; // Черный цвет текста
+
+            & > span {
+                margin-left: 24px;
+            }
         }
 
         .menu-item-selected {

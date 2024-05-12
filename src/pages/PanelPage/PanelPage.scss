@@ -14,6 +14,7 @@
             .search-block {
                 display: flex;
                 align-items: center;
+                flex: 1;
 
                 .search {
                     padding: 15px;
@@ -22,6 +23,7 @@
                     background: #FDFDFD;
                     border: 1px solid #EBEBEB;
                     border-radius: 8px;
+                    width: 100%;
 
                     &>input {
                         font-family: Barlow;
@@ -30,6 +32,7 @@
                         line-height: 19.2px;
                         border: 0;
                         outline: none;
+                        width: 100%;
                     }
                 }
             }
@@ -37,6 +40,7 @@
             .user-block {
                 display: flex;
                 align-items: center;
+                flex: 0;
 
                 .settings {
                     display: flex;
