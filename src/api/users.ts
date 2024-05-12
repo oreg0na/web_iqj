@@ -1,7 +1,6 @@
-// users.tsx
-import axios from 'axios';
-
-const API_URL = "https://mireaiqj.ru:8443/auth/firebase/user";
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios, { AxiosError } from 'axios'
+import { setIsLogin } from '../store/slices/dataSlice'
 
 export interface User {
     uid: string;
@@ -15,12 +14,17 @@ export interface User {
     role?: string;
 }
 
-export const fetchUsers = async (): Promise<User[]> => {
+export const getUsers = createAsyncThunk('users/get', async (data: any, thunkAPI) => {
     try {
-        const response = await axios.get<User[]>(API_URL);
-        return response.data;
+        const response = await axios.get<Array<User>>('https://mireaiqj.ru:8443/auth/firebase/user', {
+            withCredentials: true
+        })
+        return thunkAPI.fulfillWithValue(response.data)
     } catch (error) {
-        console.error("Failed to fetch users:", error);
-        return [];
+        if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError
+            return thunkAPI.rejectWithValue(axiosError.message)
+        }
+        return thunkAPI.rejectWithValue("Unknown axios error")
     }
-};
+})
