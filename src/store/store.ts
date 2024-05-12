@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authSlice from './slices/authSlice'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import authSlice from './slices/authSlice'
 import dataSlice from './slices/dataSlice'
 import usersSlice from './slices/usersSlice'
 

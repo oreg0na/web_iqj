@@ -1,17 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios, { AxiosError } from 'axios'
-import { setIsLogin } from '../store/slices/dataSlice'
 
 export interface User {
-    uid: string;
-    email: string;
-    password_hash: string;
-    password_salt: string;
-    display_name: string;
-    phone_number: string;
-    last_sign_in_time: string;
-    creation_time: string;
-    role?: string;
+    uid: string
+    email: string
+    password_hash: string
+    password_salt: string
+    display_name: string
+    phone_number: string
+    last_sign_in_time: string
+    creation_time: string
+    role?: string
 }
 
 export const getUsers = createAsyncThunk('users/get', async (data: any, thunkAPI) => {
@@ -25,6 +24,6 @@ export const getUsers = createAsyncThunk('users/get', async (data: any, thunkAPI
             const axiosError = error as AxiosError
             return thunkAPI.rejectWithValue(axiosError.message)
         }
-        return thunkAPI.rejectWithValue("Unknown axios error")
+        return thunkAPI.rejectWithValue('Unknown axios error')
     }
 })

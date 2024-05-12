@@ -20,6 +20,6 @@ export const login = createAsyncThunk('auth/login', async (data: LoginData, thun
             const axiosError = error as AxiosError
             return thunkAPI.rejectWithValue(axiosError.message)
         }
-        return thunkAPI.rejectWithValue("Unknown axios error")
+        return thunkAPI.rejectWithValue('Unknown axios error')
     }
 })

@@ -1,11 +1,10 @@
-import { useState, ChangeEvent, FocusEvent, useEffect, useCallback } from 'react'
-import React from 'react'
 import { motion } from 'framer-motion'
-import Notification from '../../components/Notification/Notification'
-import './AuthPage.scss'
+import React, { ChangeEvent, FocusEvent, useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { AppDispatch, useAppSelector } from '../../store/store'
 import { login } from '../../api/auth'
+import Notification from '../../components/Notification/Notification'
+import { AppDispatch, useAppSelector } from '../../store/store'
+import './AuthPage.scss'
 
 const Login: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
     const [currentNotification, setCurrentNotification] = useState<string | null>(null)
 
     useEffect(() => {
-        if (auth.status == 'failed' && auth.error) {
+        if (auth.status === 'failed' && auth.error) {
             showNotification(auth.error)
         }
     }, [auth.status])

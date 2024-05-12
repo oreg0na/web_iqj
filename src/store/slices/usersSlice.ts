@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { login } from '../../api/auth'
-import axios from 'axios'
 import { User, getUsers } from '../../api/users'
 
 interface IInitialState {

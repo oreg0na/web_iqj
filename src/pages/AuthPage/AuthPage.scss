@@ -21,8 +21,10 @@ $phone-width: 420px;
         width: 768px;
         max-width: 100%;
         min-height: 480px;
-        display: flex; /* Используем flex-бокс */
-        align-items: stretch; /* Добавляем растяжение */
+        display: flex;
+        /* Используем flex-бокс */
+        align-items: stretch;
+        /* Добавляем растяжение */
     }
 
     .container p {
@@ -156,8 +158,10 @@ $phone-width: 420px;
         width: 440px;
         max-width: 100%;
         min-height: 360px;
-        display: flex; /* Используем flex-бокс */
-        align-items: stretch; /* Добавляем растяжение */
+        display: flex;
+        /* Используем flex-бокс */
+        align-items: stretch;
+        /* Добавляем растяжение */
     }
 
     .container p {
@@ -259,8 +263,10 @@ $phone-width: 420px;
         width: 240px;
         max-width: 100%;
         min-height: 310px;
-        display: flex; /* Используем flex-бокс */
-        align-items: stretch; /* Добавляем растяжение */
+        display: flex;
+        /* Используем flex-бокс */
+        align-items: stretch;
+        /* Добавляем растяжение */
     }
 
     .container p {
@@ -337,7 +343,7 @@ $phone-width: 420px;
     .form-container button {
         width: 150%;
     }
-    
+
     .sign-in {
         position: sticky;
         margin-left: auto;

@@ -73,31 +73,31 @@ const UserList = () => {
             <div className='table-container'>
                 <table>
                     <thead>
-                    <tr>
-                        <th>UID</th>
-                        <th>Электронная почта</th>
-                        <th>ФИО</th>
-                        <th>Номер телефона</th>
-                        <th>Дата создания</th>
-                        <th>Последний вход</th>
-                        <th>Действие</th>
-                    </tr>
+                        <tr>
+                            <th>UID</th>
+                            <th>Электронная почта</th>
+                            <th>ФИО</th>
+                            <th>Номер телефона</th>
+                            <th>Дата создания</th>
+                            <th>Последний вход</th>
+                            <th>Действие</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {filteredUsers?.map(user => (
-                        <tr key={user.uid}>
-                            <td>{user.uid}</td>
-                            <td>{user.email}</td>
-                            <td>{user.display_name}</td>
-                            <td>{user.phone_number}</td>
-                            <td>{new Date(user.creation_time).toLocaleDateString()}</td>
-                            <td>{new Date(user.last_sign_in_time).toLocaleDateString()}</td>
-                            <td>
-                                <button className='edit-btn'>✎</button>
-                                <button className='delete-btn'>✕</button>
-                            </td>
-                        </tr>
-                    ))}
+                        {filteredUsers?.map(user => (
+                            <tr key={user.uid}>
+                                <td>{user.uid}</td>
+                                <td>{user.email}</td>
+                                <td>{user.display_name}</td>
+                                <td>{user.phone_number}</td>
+                                <td>{new Date(user.creation_time).toLocaleDateString()}</td>
+                                <td>{new Date(user.last_sign_in_time).toLocaleDateString()}</td>
+                                <td>
+                                    <button className='edit-btn'>✎</button>
+                                    <button className='delete-btn'>✕</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

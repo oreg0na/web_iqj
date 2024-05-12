@@ -1,19 +1,18 @@
-import React from 'react'
-import Menu from '../../components/Menu/Menu'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import Menu from '../../components/Menu/Menu'
 
-import UserList from '../../components/Users/UserList/UserList'
 import EditUser from '../../components/Users/EditUser/EditUser'
+import UserList from '../../components/Users/UserList/UserList'
 
-import NewsList from '../../components/News/NewsList/NewsList'
 import EditNews from '../../components/News/EditNews/EditNews'
+import NewsList from '../../components/News/NewsList/NewsList'
 
-import EditAd from '../../components/Ad/EditAd/EditAd'
 import AdList from '../../components/Ad/AdList/AdList'
+import EditAd from '../../components/Ad/EditAd/EditAd'
 
+import SearchIcon from './assets/SearchIcon.svg'
 import SettingsIcon from './assets/SettingsIcon.svg'
 import TemplateUserIcon from './assets/TemplateUserIcon.jpg'
-import SearchIcon from './assets/SearchIcon.svg'
 
 import './PanelPage.scss'
 
@@ -25,7 +24,7 @@ const PanelPage = () => {
                 <div className='top-line'>
                     <div className='search-block'>
                         <div className='search'>
-                            <input placeholder='Поиск'/>
+                            <input placeholder='Поиск' />
                             <img src={SearchIcon} />
                         </div>
                     </div>
@@ -34,7 +33,7 @@ const PanelPage = () => {
                             <img src={SettingsIcon} />
                         </div>
                         <div className='line'></div>
-                        <div className="user">
+                        <div className='user'>
                             <span>Павличенко А.И.</span>
                             <img src={TemplateUserIcon} />
                         </div>

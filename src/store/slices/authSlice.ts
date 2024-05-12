@@ -22,14 +22,14 @@ const authSlice = createSlice({
         builder.addCase(login.pending, (state, action: any) => {
             state.status = 'loading'
         }).addCase(login.fulfilled, (state, action) => {
-            axios.defaults.headers["Authorization"] = `Bearer ${action.payload}`
-            localStorage.setItem("token", `Bearer ${action.payload}`)
-            localStorage.setItem("isLogin", "true")
+            axios.defaults.headers['Authorization'] = `Bearer ${action.payload}`
+            localStorage.setItem('token', `Bearer ${action.payload}`)
+            localStorage.setItem('isLogin', 'true')
 
             state.status = 'success'
             state.result = action.payload
         }).addCase(login.rejected, (state, action) => {
-            localStorage.setItem("isLogin", "false")
+            localStorage.setItem('isLogin', 'false')
 
             state.status = 'failed'
             state.result = null

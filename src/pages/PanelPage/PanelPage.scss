@@ -23,7 +23,7 @@
                     border: 1px solid #EBEBEB;
                     border-radius: 8px;
 
-                    & > input {
+                    &>input {
                         font-family: Barlow;
                         font-size: 16px;
                         font-weight: 400;
@@ -42,7 +42,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-            
+
                     background: #FF5B5B26;
                     border-radius: 15px;
                     padding: 10px;
@@ -59,7 +59,7 @@
                     display: flex;
                     align-items: center;
 
-                    & > img {
+                    &>img {
                         width: 46px;
                         height: 46px;
                         border-radius: 50%;
@@ -67,7 +67,7 @@
                         margin-left: 17px;
                     }
 
-                    & > span {
+                    &>span {
                         font-family: Barlow;
                         font-size: 16px;
                         font-weight: 400;
