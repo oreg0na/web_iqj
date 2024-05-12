@@ -11,6 +11,10 @@ import EditNews from '../../components/News/EditNews/EditNews'
 import EditAd from '../../components/Ad/EditAd/EditAd'
 import AdList from '../../components/Ad/AdList/AdList'
 
+import SettingsIcon from './SettingsIcon.svg'
+import TemplateUserIcon from './TemplateUserIcon.jpg'
+import SearchIcon from './SearchIcon.svg'
+
 import './PanelPage.scss'
 
 const PanelPage = () => {
@@ -18,6 +22,24 @@ const PanelPage = () => {
         <div className='panel-container'>
             <Menu />
             <div className='panel-content'>
+                <div className='top-line'>
+                    <div className='search-block'>
+                        <div className='search'>
+                            <input placeholder='Поиск'/>
+                            <img src={SearchIcon} />
+                        </div>
+                    </div>
+                    <div className='user-block'>
+                        <div className='settings'>
+                            <img src={SettingsIcon} />
+                        </div>
+                        <div className='line'></div>
+                        <div className="user">
+                            <span>Павличенко А.И.</span>
+                            <img src={TemplateUserIcon} />
+                        </div>
+                    </div>
+                </div>
                 <Routes>
                     <Route index element={<Navigate to='user' />} />
                     <Route path='user'>
