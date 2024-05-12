@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.scss'
 import Login from './pages/AuthPage/AuthPage'
@@ -7,9 +7,12 @@ import NotFound from './pages/NotFound/NotFound'
 import PanelPage from './pages/PanelPage/PanelPage'
 import { setIsLogin } from './store/slices/dataSlice'
 import { useAppDispatch, useAppSelector } from './store/store'
+import Notification from './components/Notification/Notification'
+import { addNotification, removeNotification, setCurrentNotification } from './store/slices/notificationSlice'
 
 const App: React.FC = () => {
     const data = useAppSelector(state => state.data)
+    const notification = useAppSelector(state => state.notification)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -19,6 +22,18 @@ const App: React.FC = () => {
             dispatch(setIsLogin(true))
             axios.defaults.headers['Authorization'] = localStorage.getItem('token')
         }
+    }, [])
+
+    useEffect(() => {
+        if (notification.currentNotification === null && notification.notifications.length > 0) {
+            const lastNotification = notification.notifications[0]
+            dispatch(removeNotification())
+            dispatch(setCurrentNotification(lastNotification))
+        }
+    }, [notification.currentNotification, notification.notifications])
+
+    const handleNotificationEnd = useCallback(() => {
+        dispatch(setCurrentNotification(null))
     }, [])
 
     const isNotlogin = (component: JSX.Element, elseUrl: string): JSX.Element => {
@@ -39,6 +54,7 @@ const App: React.FC = () => {
 
     return (
         <BrowserRouter>
+            <Notification message={notification.currentNotification} onEnd={handleNotificationEnd} />
             <Routes>
                 <Route index element={<Navigate to='/login' />} />
                 <Route path='/login' element={isNotlogin(<Login />, '/panel')} />

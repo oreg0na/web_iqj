@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import React, { ChangeEvent, FocusEvent, useCallback, useEffect, useState } from 'react'
+import React, { ChangeEvent, FocusEvent, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { login } from '../../api/auth'
-import Notification from '../../components/Notification/Notification'
+import { addNotification } from '../../store/slices/notificationSlice'
 import { AppDispatch, useAppSelector } from '../../store/store'
 import './AuthPage.scss'
 
@@ -15,32 +15,16 @@ const Login: React.FC = () => {
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
     const [formValid, setFormValid] = useState(false)
-    const [notificationQueue, setNotificationQueue] = useState<string[]>([])
-    const [currentNotification, setCurrentNotification] = useState<string | null>(null)
 
     useEffect(() => {
         if (auth.status === 'failed' && auth.error) {
-            showNotification(auth.error)
+            dispatch(addNotification(auth.error))
         }
     }, [auth.status])
 
     useEffect(() => {
         setFormValid(!emailError && !passwordError)
     }, [emailError, passwordError])
-
-    useEffect(() => {
-        if (currentNotification === null && notificationQueue.length > 0) {
-            setCurrentNotification(notificationQueue.shift()!)
-        }
-    }, [currentNotification, notificationQueue])
-
-    const showNotification = useCallback((message: string) => {
-        setNotificationQueue(prevQueue => [...prevQueue, message])
-    }, [])
-
-    const handleNotificationEnd = useCallback(() => {
-        setCurrentNotification(null)
-    }, [])
 
     const validateEmail = (email: string) => {
         const re =
@@ -86,7 +70,7 @@ const Login: React.FC = () => {
         }
 
         if (error) {
-            showNotification(error)
+            dispatch(addNotification(error))
         }
     }
 
@@ -99,8 +83,6 @@ const Login: React.FC = () => {
     return (
         <div className='auth-page'>
             <div className='container'>
-                <Notification message={currentNotification} onEnd={handleNotificationEnd} />
-
                 <motion.div
                     className='toggle-container'
                     initial={{ x: -100 }}

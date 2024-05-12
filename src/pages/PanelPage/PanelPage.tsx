@@ -24,7 +24,7 @@ const PanelPage = () => {
                 <div className='top-line'>
                     <div className='search-block'>
                         <div className='search'>
-                            <input placeholder='Поиск' />
+                            <input placeholder='Search' />
                             <img src={SearchIcon} />
                         </div>
                     </div>
@@ -34,7 +34,7 @@ const PanelPage = () => {
                         </div>
                         <div className='line'></div>
                         <div className='user'>
-                            <span>Павличенко А.И.</span>
+                            <span>Pavlichenko A.I.</span>
                             <img src={TemplateUserIcon} />
                         </div>
                     </div>
