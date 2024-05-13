@@ -10,6 +10,7 @@ export interface User {
     last_sign_in_time: string
     institute: string
     email: string
+    role: string
     display_name: string
     creation_time: string
 }

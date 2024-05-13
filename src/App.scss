@@ -24,11 +24,8 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    overflow: overlay;
-}
-
 #root {
     height: 100vh;
     width: 100vw;
+    overflow: auto;
 }
