@@ -17,6 +17,7 @@ const UserList = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const users = useAppSelector(state => state.users)
+    const [roles, setRoles] = useState<Array<string>>()
 
     const [roleFilter, setRoleFilter] = useState(false)
 
@@ -29,6 +30,16 @@ const UserList = () => {
             dispatch(addNotification(users.error))
         }
     }, [users.status])
+
+    useEffect(() => {
+        const rolesBuffer: Array<string> = []
+        users.result?.forEach(user => {
+            if (!rolesBuffer.includes(user.position)) {
+                rolesBuffer.push(user.position)
+            }
+        })
+        setRoles(rolesBuffer)
+    }, [users.result])
 
     return (
         <div className='user-list-container'>
@@ -50,9 +61,11 @@ const UserList = () => {
                             </div>
                             <div className='line'></div>
                             <div className='filter-items'>
-                                <span>Student</span>
-                                <span>Teacher</span>
-                                <span>Administrator</span>
+                                {
+                                    roles?.map((role) => 
+                                        <span>{role}</span>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className='image-block'>
@@ -86,88 +99,32 @@ const UserList = () => {
                         <tr>
                             <td>ID</td>
                             <td>Names</td>
-                            <td>Register date</td>
                             <td>Job title</td>
+                            <td>Register date</td>
                             <td>Institute</td>
                             <td>Login</td>
                             <td>Role</td>
                             <td>Action</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pavlichenko Alexander Ivanovich</td>
-                            <td>01.09.2024</td>
-                            <td>Teacher</td>
-                            <td>IPTIP</td>
-                            <td>12312asdasdasd</td>
-                            <td>Student</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')} />
-                                    <img src={RemoveUserIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pavlichenko Alexander Ivanovich</td>
-                            <td>01.09.2024</td>
-                            <td>Teacher</td>
-                            <td>IPTIP</td>
-                            <td>12312asdasdasd</td>
-                            <td>Student</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditUserIcon} />
-                                    <img src={RemoveUserIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pavlichenko Alexander Ivanovich</td>
-                            <td>01.09.2024</td>
-                            <td>Teacher</td>
-                            <td>IPTIP</td>
-                            <td>12312asdasdasd</td>
-                            <td>Student</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditUserIcon} />
-                                    <img src={RemoveUserIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pavlichenko Alexander Ivanovich</td>
-                            <td>01.09.2024</td>
-                            <td>Teacher</td>
-                            <td>IPTIP</td>
-                            <td>12312asdasdasd</td>
-                            <td>Student</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditUserIcon} />
-                                    <img src={RemoveUserIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pavlichenko Alexander Ivanovich</td>
-                            <td>01.09.2024</td>
-                            <td>Teacher</td>
-                            <td>IPTIP</td>
-                            <td>12312asdasdasd</td>
-                            <td>Student</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditUserIcon} />
-                                    <img src={RemoveUserIcon} />
-                                </div>
-                            </td>
-                        </tr>
+                        {
+                            users.result?.map((user, index) => 
+                                <tr>
+                                    <td>{index + 1}</td>
+                                    <td>{user.display_name}</td>
+                                    <td>{user.position}</td>
+                                    <td>{user.creation_time}</td>
+                                    <td>{user.institute}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.position}</td>
+                                    <td>
+                                        <div className='actions-block'>
+                                            <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')} />
+                                            <img src={RemoveUserIcon} />
+                                        </div>
+                                    </td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>
