@@ -1,8 +1,11 @@
-import React from 'react'
-
+import './AdList.scss'
 const AdList = () => {
     return (
-        <div>AdList</div>
+        <div className='user-edit-container'>
+            <div className='title-block'>
+                <span className='title'>Ad List</span>
+            </div>
+        </div>
     )
 }
 

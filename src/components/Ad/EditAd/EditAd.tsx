@@ -1,8 +1,11 @@
-import React from 'react'
-
+import './EditAd.scss'
 const EditAd = () => {
     return (
-        <div>EditAd</div>
+        <div className='user-edit-container'>
+            <div className='title-block'>
+                <span className='title'>Ad Edit</span>
+            </div>
+        </div>
     )
 }
 

@@ -1,8 +1,11 @@
-import React from 'react'
-
+import './NewsList.scss'
 const NewsList = () => {
     return (
-        <div>NewsList</div>
+        <div className='user-edit-container'>
+            <div className='title-block'>
+                <span className='title'>News List</span>
+            </div>
+        </div>
     )
 }
 
