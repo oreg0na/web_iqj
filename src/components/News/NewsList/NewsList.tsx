@@ -16,7 +16,7 @@ import './NewsList.scss'
 const NewsList: React.FC = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const news = useAppSelector(state => state.news)
+    const news_state = useAppSelector(state => state.news)
     const [authorFilter, setAuthorFilter] = useState(false)
     const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null)
     const [authors, setAuthor] = useState<Array<string>>()
@@ -26,20 +26,20 @@ const NewsList: React.FC = () => {
     }, [])
 
     useEffect(() => {
-        if (news.status === 'failed' && news.error) {
-            dispatch(addNotification(news.error))
+        if (news_state.status === 'failed' && news_state.error) {
+            dispatch(addNotification(news_state.error))
         }
-    }, [news.status])
+    }, [news_state.status])
 
     useEffect(() => {
         const rolesBuffer: Array<string> = []
-        news.result?.forEach(news => {
-            if (!rolesBuffer.includes(news.author)) {
-                rolesBuffer.push(news.author)
+        news_state.result?.forEach(news => {
+            if (!rolesBuffer.includes(news.author_name)) {
+                rolesBuffer.push(news.author_name)
             }
         })
         setAuthor(rolesBuffer)
-    }, [news.result])
+    }, [news_state.result])
 
     return (
         <div className='news-list-container'>
@@ -65,8 +65,8 @@ const NewsList: React.FC = () => {
                             <div className='line'></div>
                             <div className='filter-items'>
                                 {
-                                    authors?.map((role, index) =>
-                                        <span key={index} onClick={() => setSelectedAuthor(role === selectedAuthor ? null : role)}>{role}</span>
+                                    authors?.map((author_name, index) =>
+                                        <span key={index} onClick={() => setSelectedAuthor(author_name === selectedAuthor ? null : author_name)}>{author_name}</span>
                                     )
                                 }
                             </div>
@@ -109,76 +109,28 @@ const NewsList: React.FC = () => {
                             <td>Author</td>
                             <td>Action</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Халява для студентов</td>
-                            <td>01.09.2024</td>
-                            <td>ИПТИП, ХАЛЯВА, ВЕСНА2024</td>
-                            <td>ИПТИП, ИРИ, ИКБ, бла бла</td>
-                            <td>superabdul</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
-                                    <img src={RemoveNewsIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Халява для студентов</td>
-                            <td>01.09.2024</td>
-                            <td>ИПТИП, ХАЛЯВА, ВЕСНА2024</td>
-                            <td>ИПТИП, ИРИ, ИКБ, бла бла</td>
-                            <td>superabdul</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
-                                    <img src={RemoveNewsIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Халява для студентов</td>
-                            <td>01.09.2024</td>
-                            <td>ИПТИП, ХАЛЯВА, ВЕСНА2024</td>
-                            <td>ИПТИП, ИРИ, ИКБ, бла бла</td>
-                            <td>superabdul</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
-                                    <img src={RemoveNewsIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Халява для студентов</td>
-                            <td>01.09.2024</td>
-                            <td>ИПТИП, ХАЛЯВА, ВЕСНА2024</td>
-                            <td>ИПТИП, ИРИ, ИКБ, бла бла</td>
-                            <td>superabdul</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
-                                    <img src={RemoveNewsIcon} />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Халява для студентов</td>
-                            <td>01.09.2024</td>
-                            <td>ИПТИП, ХАЛЯВА, ВЕСНА2024</td>
-                            <td>ИПТИП, ИРИ, ИКБ, бла бла</td>
-                            <td>superabdul</td>
-                            <td>
-                                <div className='actions-block'>
-                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
-                                    <img src={RemoveNewsIcon} />
-                                </div>
-                            </td>
-                        </tr>
+                        {
+                            news_state.result?.map((news, index) => {
+                                if (selectedAuthor === null || news.author_name === selectedAuthor) {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{news.id}</td>
+                                            <td>{news.header}</td>
+                                            <td>{news.publication_time}</td>
+                                            <td>{news.tags}</td>
+                                            <td>ИПТИП</td>
+                                            <td>{news.author_name}</td>
+                                            <td>
+                                                <div className='actions-block'>
+                                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')}/>
+                                                    <img src={RemoveNewsIcon}/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                }
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
