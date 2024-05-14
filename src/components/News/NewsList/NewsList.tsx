@@ -4,6 +4,8 @@ import { getNews } from '../../../api/news'
 import { addNotification } from '../../../store/slices/notificationSlice'
 import { useAppDispatch, useAppSelector } from '../../../store/store'
 
+import moment from 'moment'
+
 import CalendarIcon from "../../News/NewsList/assets/CalendarIcon.svg"
 import DownArrowIcon from "../../News/NewsList/assets/DownArrowIcon.svg"
 import EditNewsIcon from "../../News/NewsList/assets/EditNewsIcon.svg"
@@ -116,8 +118,8 @@ const NewsList: React.FC = () => {
                                         <tr key={index}>
                                             <td>{news.id}</td>
                                             <td>{news.header}</td>
-                                            <td>{news.publication_time}</td>
-                                            <td>{news.tags}</td>
+                                            <td>{moment(news.publication_time).format("YYYY-MM-DD hh:mm:ss")}</td>
+                                            <td>{news.tags.join(' ')}</td>
                                             <td>ИПТИП</td>
                                             <td>{news.author_name}</td>
                                             <td>

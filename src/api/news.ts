@@ -7,7 +7,7 @@ export interface News {
     link: string
     content: string
     image_link: string
-    tags: string
+    tags: Array<string>
     publication_time: string
     author_name: string
 }

@@ -4,6 +4,8 @@ import { getUsers } from '../../../api/users'
 import { addNotification } from '../../../store/slices/notificationSlice'
 import { useAppDispatch, useAppSelector } from '../../../store/store'
 
+import moment from 'moment'
+
 import CalendarIcon from './assets/CalendarIcon.svg'
 import DownArrowIcon from './assets/DownArrowIcon.svg'
 import EditUserIcon from './assets/EditUserIcon.svg'
@@ -118,7 +120,7 @@ const UserList: React.FC = () => {
                                         <td>{index + 1}</td>
                                         <td>{user.display_name}</td>
                                         <td>{user.position}</td>
-                                        <td>{user.creation_time}</td>
+                                        <td>{moment(user.creation_time).format("YYYY-MM-DD hh:mm:ss")}</td>
                                         <td>{user.institute}</td>
                                         <td>{user.email}</td>
                                         <td>{user.role}</td>
