@@ -1,4 +1,7 @@
+import React from 'react'
+
 import './EditNews.scss'
+
 const EditNews = () => {
     return (
         <div className='user-edit-container'>

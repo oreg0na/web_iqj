@@ -1,5 +1,8 @@
+import React from 'react'
+
 import './AdList.scss'
-const AdList = () => {
+
+const AdList: React.FC = () => {
     return (
         <div className='user-edit-container'>
             <div className='title-block'>

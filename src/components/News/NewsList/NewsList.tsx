@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {getNews} from "../../../api/news";
+import {getNews} from '../../../api/news'
 import './NewsList.scss'
 import { addNotification } from '../../../store/slices/notificationSlice'
 import { useNavigate } from 'react-router-dom'

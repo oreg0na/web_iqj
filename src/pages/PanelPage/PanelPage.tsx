@@ -1,16 +1,13 @@
-import {Navigate, Route, Routes, useNavigate} from 'react-router-dom'
-import Menu from '../../components/Menu/Menu'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
+import Menu from '../../components/Menu/Menu'
 import EditUser from '../../components/Users/EditUser/EditUser'
 import UserList from '../../components/Users/UserList/UserList'
-
 import EditNews from '../../components/News/EditNews/EditNews'
 import NewsList from '../../components/News/NewsList/NewsList'
-
 import AdList from '../../components/Ad/AdList/AdList'
 import EditAd from '../../components/Ad/EditAd/EditAd'
-
-import EditAccount from "../../components/Account/EditAccount";
+import EditAccount from '../../components/Account/EditAccount'
 
 import SearchIcon from './assets/SearchIcon.svg'
 import SettingsIcon from './assets/SettingsIcon.svg'
@@ -35,7 +32,7 @@ const PanelPage = () => {
                     </div>
                     <div className='user-block'>
                         <div className='settings'>
-                            <img src={SettingsIcon} onClick={() => navigate('/panel/profile/settings')}/>
+                            <img src={SettingsIcon} onClick={() => navigate('/panel/profile/settings')} />
                         </div>
                         <div className='line'></div>
                         <div className='user'>

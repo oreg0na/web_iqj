@@ -1,5 +1,8 @@
+import React from 'react'
+
 import './EditAccount.scss'
-const EditAccount = () => {
+
+const EditAccount: React.FC = () => {
     return (
         <div className='user-edit-container'>
             <div className='title-block'>

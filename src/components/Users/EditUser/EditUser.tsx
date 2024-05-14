@@ -1,4 +1,7 @@
+import React from 'react'
+
 import './EditUser.scss'
+
 const EditUser = () => {
     return (
         <div className='user-edit-container'>

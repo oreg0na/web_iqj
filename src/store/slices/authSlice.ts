@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { login } from '../../api/auth'
+
 import axios from 'axios'
 
 interface IInitialState {

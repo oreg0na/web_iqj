@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getUsers } from '../../../api/users'
-import { useAppDispatch, useAppSelector } from '../../../store/store'
 import { addNotification } from '../../../store/slices/notificationSlice'
+import { useAppDispatch, useAppSelector } from '../../../store/store'
 
 import CalendarIcon from './assets/CalendarIcon.svg'
 import DownArrowIcon from './assets/DownArrowIcon.svg'
-import UserIcon from './assets/UserIcon.svg'
-import SearchIcon from './assets/SearchIcon.svg'
 import EditUserIcon from './assets/EditUserIcon.svg'
 import RemoveUserIcon from './assets/RemoveUserIcon.svg'
+import SearchIcon from './assets/SearchIcon.svg'
+import UserIcon from './assets/UserIcon.svg'
 
 import './UserList.scss'
-import { useNavigate } from 'react-router-dom'
 
 const UserList = () => {
     const dispatch = useAppDispatch()
@@ -48,7 +48,10 @@ const UserList = () => {
                 <span className='title'>Users list</span>
                 <div className='filters-block'>
                     <div onClick={() => setRoleFilter(true)} className='filter-block'>
-                        <div onClick={(e) => { e.stopPropagation(); setRoleFilter(false)}} className={`drop-down-menu ${roleFilter ? '' : 'close'}`}>
+                        <div onClick={(e) => {
+                            e.stopPropagation()
+                            setRoleFilter(false)}
+                            } className={`drop-down-menu ${roleFilter ? '' : 'close'}`}>
                             <div className='filter-block'>
                                 <div className='image-block'>
                                     <img src={UserIcon} />

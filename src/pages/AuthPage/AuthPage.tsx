@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion'
 import React, { ChangeEvent, FocusEvent, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useDispatch } from 'react-redux'
 import { login } from '../../api/auth'
 import { addNotification } from '../../store/slices/notificationSlice'
 import { AppDispatch, useAppSelector } from '../../store/store'
+
 import './AuthPage.scss'
 
 const Login: React.FC = () => {

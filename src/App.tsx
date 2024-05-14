@@ -1,14 +1,16 @@
-import axios from 'axios'
 import React, { useCallback, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import './App.scss'
+import { setIsLogin } from './store/slices/dataSlice'
+import { removeNotification, setCurrentNotification } from './store/slices/notificationSlice'
+import { useAppDispatch, useAppSelector } from './store/store'
+
+import axios from 'axios'
 import Notification from './components/Notification/Notification'
 import Login from './pages/AuthPage/AuthPage'
 import NotFound from './pages/NotFound/NotFound'
 import PanelPage from './pages/PanelPage/PanelPage'
-import { setIsLogin } from './store/slices/dataSlice'
-import { removeNotification, setCurrentNotification } from './store/slices/notificationSlice'
-import { useAppDispatch, useAppSelector } from './store/store'
+
+import './App.scss'
 
 const App: React.FC = () => {
     const data = useAppSelector(state => state.data)

@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import AdIcon from './assets/AdIcon.svg'
 import NewsIcon from './assets/NewsIcon.svg'
+import NewsSelectedIcon from './assets/NewsSelectedIcon.svg'
 import UsersIcon from './assets/UsersIcon.svg'
 import UsersSelectedIcon from './assets/UsersSelectedIcon.svg'
-import NewsSelectedIcon from './assets/NewsSelectedIcon.svg'
 
 import './Menu.scss'
 
@@ -16,7 +16,7 @@ interface MenuItem {
     selectedIcon: string
 }
 
-function Menu() {
+const Menu: React.FC = () => {
     const [selected, setSelected] = useState<number>(0)
     const navigate = useNavigate()
 

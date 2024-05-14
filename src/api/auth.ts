@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios, { AxiosError } from 'axios'
 import { setIsLogin } from '../store/slices/dataSlice'
+import axios, { AxiosError } from 'axios'
 
 interface LoginData {
     email: string
@@ -14,7 +14,7 @@ export const login = createAsyncThunk('auth/login', async (data: LoginData, thun
         const response = await axios.post<LoginResult>('https://mireaiqj.ru:8443/web_sign-in', data)
         thunkAPI.dispatch(setIsLogin(true))
         return thunkAPI.fulfillWithValue(response.data)
-    } catch(error) {
+    } catch (error) {
         thunkAPI.dispatch(setIsLogin(false))
         if (axios.isAxiosError(error)) {
             const axiosError = error as AxiosError
