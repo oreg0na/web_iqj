@@ -5,6 +5,7 @@ import EditUser from '../../components/Users/EditUser/EditUser'
 import UserList from '../../components/Users/UserList/UserList'
 import EditNews from '../../components/News/EditNews/EditNews'
 import NewsList from '../../components/News/NewsList/NewsList'
+import AddNews from '../../components/News/AddNews/AddNews'
 import AdList from '../../components/Ad/AdList/AdList'
 import EditAd from '../../components/Ad/EditAd/EditAd'
 import EditAccount from '../../components/Account/EditAccount'
@@ -52,6 +53,7 @@ const PanelPage = () => {
                         <Route index element={<Navigate to='list' />} />
                         <Route path='list' element={<NewsList />} />
                         <Route path='edit' element={<EditNews />} />
+                        <Route path='add' element={<AddNews />} />
                     </Route>
                     <Route path='ad'>
                         <Route index element={<Navigate to='list' />} />

@@ -100,39 +100,39 @@ const UserList = () => {
                 <button className='search-button'>Search</button>
                 <table>
                     <tbody>
-                        <tr>
-                            <td>ID</td>
-                            <td>Names</td>
-                            <td>Job title</td>
-                            <td>Register date</td>
-                            <td>Institute</td>
-                            <td>Login</td>
-                            <td>Role</td>
-                            <td>Action</td>
-                        </tr>
-                        {
-                            users.result?.map((user, index) => {
-                                if (selectedRole === null || user.role === selectedRole) {
-                                    return (
-                                        <tr>
-                                            <td>{index + 1}</td>
-                                            <td>{user.display_name}</td>
-                                            <td>{user.position}</td>
-                                            <td>{user.creation_time}</td>
-                                            <td>{user.institute}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.role}</td>
-                                            <td>
-                                                <div className='actions-block'>
-                                                    <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')} />
-                                                    <img src={RemoveUserIcon} />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                }
-                            })
-                        }
+                    <tr>
+                        <td>ID</td>
+                        <td>Names</td>
+                        <td>Job title</td>
+                        <td>Register date</td>
+                        <td>Institute</td>
+                        <td>Login</td>
+                        <td>Role</td>
+                        <td>Action</td>
+                    </tr>
+                    {
+                        users.result?.map((user, index) => {
+                            if (selectedRole === null || user.role === selectedRole) {
+                                return (
+                                    <tr>
+                                        <td>{index + 1}</td>
+                                        <td>{user.display_name}</td>
+                                        <td>{user.position}</td>
+                                        <td>{user.creation_time}</td>
+                                        <td>{user.institute}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.role}</td>
+                                        <td>
+                                            <div className='actions-block'>
+                                                <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')}/>
+                                                <img src={RemoveUserIcon}/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                        })
+                    }
                     </tbody>
                 </table>
             </div>

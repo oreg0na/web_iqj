@@ -9,6 +9,7 @@ export interface News {
     image_link: string
     tags: string
     publication_time: string
+    author: string
 }
 
 export const getNews = createAsyncThunk('news/get', async (data: any, thunkAPI) => {
