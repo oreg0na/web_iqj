@@ -99,7 +99,7 @@ const NewsList: React.FC = () => {
                 <input onChange={(e) => setSearch(e.target.value === '' ? null : e.target.value)} placeholder='ID, Title, Tags...' />
             </div>
             <div className='table-block'>
-                <button className='search-button'>Search</button>
+                {/*<button className='search-button'>Search</button>*/}
                 <button className='addnews-button' onClick={() => navigate('/panel/news/add')}>Add News</button>
                 <table>
                     <tbody>
@@ -136,7 +136,7 @@ const NewsList: React.FC = () => {
                                     if (search) {
                                         const searchIndex = parseInt(search)
                                         if (!Number.isNaN(searchIndex)) {
-                                            isShow = searchIndex === index + 1 ? true : false
+                                            isShow = searchIndex === parseInt(news.id) ? true : false
                                         }
                                     }
 

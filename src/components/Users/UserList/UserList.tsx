@@ -99,7 +99,7 @@ const UserList: React.FC = () => {
                 <input onChange={(e) => setSearch(e.target.value === '' ? null : e.target.value)} placeholder='ID, Last Name, First Name, Patronymic, Login...'/>
             </div>
             <div className='table-block'>
-                <button className='search-button'>Search</button>
+                {/*<button className='search-button'>Search</button>*/}
                 <table>
                     <tbody>
                     <tr>
