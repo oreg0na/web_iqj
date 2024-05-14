@@ -4,13 +4,15 @@ import authSlice from './slices/authSlice'
 import dataSlice from './slices/dataSlice'
 import usersSlice from './slices/usersSlice'
 import notificationSlice from './slices/notificationSlice'
+import newsSlice from './slices/newsSlice'
 
 export const store = configureStore({
     reducer: {
         auth: authSlice,
         data: dataSlice,
         users: usersSlice,
-        notification: notificationSlice
+        notification: notificationSlice,
+        news: newsSlice
     }
 })
 
