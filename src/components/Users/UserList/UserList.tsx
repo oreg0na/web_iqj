@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUsers } from '../../../api/users'
 import { addNotification } from '../../../store/slices/notificationSlice'
@@ -13,7 +13,7 @@ import UserIcon from './assets/UserIcon.svg'
 
 import './UserList.scss'
 
-const UserList = () => {
+const UserList: React.FC = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const users = useAppSelector(state => state.users)
@@ -66,8 +66,8 @@ const UserList = () => {
                             <div className='line'></div>
                             <div className='filter-items'>
                                 {
-                                    roles?.map((role) => 
-                                        <span onClick={() => setSelectedRole(role === selectedRole ? null : role)}>{role}</span>
+                                    roles?.map((role, index) => 
+                                        <span key={index} onClick={() => setSelectedRole(role === selectedRole ? null : role)}>{role}</span>
                                     )
                                 }
                             </div>
@@ -114,7 +114,7 @@ const UserList = () => {
                         users.result?.map((user, index) => {
                             if (selectedRole === null || user.role === selectedRole) {
                                 return (
-                                    <tr>
+                                    <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{user.display_name}</td>
                                         <td>{user.position}</td>

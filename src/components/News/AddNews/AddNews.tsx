@@ -2,7 +2,7 @@ import React from 'react'
 
 import './AddNews.scss'
 
-const AddNews = () => {
+const AddNews: React.FC = () => {
     return (
         <div className='news-add-container'>
             <div className='title-block'>

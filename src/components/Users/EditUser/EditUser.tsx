@@ -2,7 +2,7 @@ import React from 'react'
 
 import './EditUser.scss'
 
-const EditUser = () => {
+const EditUser: React.FC = () => {
     return (
         <div className='user-edit-container'>
             <div className='title-block'>

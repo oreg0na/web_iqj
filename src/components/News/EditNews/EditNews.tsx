@@ -2,7 +2,7 @@ import React from 'react'
 
 import './EditNews.scss'
 
-const EditNews = () => {
+const EditNews: React.FC = () => {
     return (
         <div className='news-edit-container'>
             <div className='title-block'>

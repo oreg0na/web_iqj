@@ -1,5 +1,8 @@
+import React from 'react'
+
 import './EditAd.scss'
-const EditAd = () => {
+
+const EditAd: React.FC = () => {
     return (
         <div className='user-edit-container'>
             <div className='title-block'>
