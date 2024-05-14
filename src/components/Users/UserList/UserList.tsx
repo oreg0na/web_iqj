@@ -21,8 +21,8 @@ const UserList: React.FC = () => {
     const users = useAppSelector(state => state.users)
     const [roles, setRoles] = useState<Array<string>>()
     const [selectedRole, setSelectedRole] = useState<string | null>(null)
-
     const [roleFilter, setRoleFilter] = useState(false)
+    const [search, setSearch] = useState<string | null>(null)
 
     useEffect(() => {
         dispatch(getUsers({}))
@@ -96,7 +96,7 @@ const UserList: React.FC = () => {
             </div>
             <div className='search'>
                 <img src={SearchIcon}/>
-                <input placeholder='ID, Last Name, First Name, Patronymic, Login...'/>
+                <input onChange={(e) => setSearch(e.target.value ?? null)} placeholder='ID, Last Name, First Name, Patronymic, Login...'/>
             </div>
             <div className='table-block'>
                 <button className='search-button'>Search</button>
@@ -115,23 +115,35 @@ const UserList: React.FC = () => {
                     {
                         users.result?.map((user, index) => {
                             if (selectedRole === null || user.role === selectedRole) {
-                                return (
-                                    <tr key={index}>
-                                        <td>{index + 1}</td>
-                                        <td>{user.display_name}</td>
-                                        <td>{user.position}</td>
-                                        <td>{moment(user.creation_time).format("YYYY-MM-DD hh:mm:ss")}</td>
-                                        <td>{user.institute}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.role}</td>
-                                        <td>
-                                            <div className='actions-block'>
-                                                <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')}/>
-                                                <img src={RemoveUserIcon}/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                )
+                                let isShow = search == null ? true : false
+
+                                if (search) {
+                                    for (const field in user) {
+                                        if (user[field as keyof typeof user].includes(search)) {
+                                            isShow = true
+                                        }
+                                    }
+                                }
+
+                                if (isShow) {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{user.display_name}</td>
+                                            <td>{user.position}</td>
+                                            <td>{moment(user.creation_time).format("YYYY-MM-DD hh:mm:ss")}</td>
+                                            <td>{user.institute}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.role}</td>
+                                            <td>
+                                                <div className='actions-block'>
+                                                    <img src={EditUserIcon} onClick={() => navigate('/panel/user/edit')} />
+                                                    <img src={RemoveUserIcon} />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                }
                             }
                         })
                     }
