@@ -22,6 +22,7 @@ const NewsList: React.FC = () => {
     const [authorFilter, setAuthorFilter] = useState(false)
     const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null)
     const [authors, setAuthor] = useState<Array<string>>()
+    const [search, setSearch] = useState<string | null>(null)
 
     useEffect(() => {
         dispatch(getNews({}))
@@ -95,7 +96,7 @@ const NewsList: React.FC = () => {
             </div>
             <div className='search'>
                 <img src={SearchIcon} />
-                <input placeholder='ID, Title, Tags...' />
+                <input onChange={(e) => setSearch(e.target.value === '' ? null : e.target.value)} placeholder='ID, Title, Tags...' />
             </div>
             <div className='table-block'>
                 <button className='search-button'>Search</button>
@@ -114,22 +115,49 @@ const NewsList: React.FC = () => {
                         {
                             news_state.result?.map((news, index) => {
                                 if (selectedAuthor === null || news.author_name === selectedAuthor) {
-                                    return (
-                                        <tr key={index}>
-                                            <td>{news.id}</td>
-                                            <td>{news.header}</td>
-                                            <td>{moment(news.publication_time).format("YYYY-MM-DD hh:mm:ss")}</td>
-                                            <td>{news.tags.join(' ')}</td>
-                                            <td>ИПТИП</td>
-                                            <td>{news.author_name}</td>
-                                            <td>
-                                                <div className='actions-block'>
-                                                    <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')}/>
-                                                    <img src={RemoveNewsIcon}/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
+                                    let isShow = search == null ? true : false
+
+                                    if (search) {
+                                        for (const field in news) {
+                                            let value = news[field as keyof typeof news]
+
+                                            if (Array.isArray(value)) {
+                                                value = value.join(' ')
+                                            }
+
+                                            if (typeof value == "string") {
+                                                if (news[field as keyof typeof news].includes(search)) {
+                                                    isShow = true
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    if (search) {
+                                        const searchIndex = parseInt(search)
+                                        if (!Number.isNaN(searchIndex)) {
+                                            isShow = searchIndex === index + 1 ? true : false
+                                        }
+                                    }
+
+                                    if (isShow) {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{news.id}</td>
+                                                <td>{news.header}</td>
+                                                <td>{moment(news.publication_time).format("YYYY-MM-DD hh:mm:ss")}</td>
+                                                <td>{news.tags.join(' ')}</td>
+                                                <td>ИПТИП</td>
+                                                <td>{news.author_name}</td>
+                                                <td>
+                                                    <div className='actions-block'>
+                                                        <img src={EditNewsIcon} onClick={() => navigate('/panel/news/edit')} />
+                                                        <img src={RemoveNewsIcon} />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                 }
                             })
                         }

@@ -96,7 +96,7 @@ const UserList: React.FC = () => {
             </div>
             <div className='search'>
                 <img src={SearchIcon}/>
-                <input onChange={(e) => setSearch(e.target.value ?? null)} placeholder='ID, Last Name, First Name, Patronymic, Login...'/>
+                <input onChange={(e) => setSearch(e.target.value === '' ? null : e.target.value)} placeholder='ID, Last Name, First Name, Patronymic, Login...'/>
             </div>
             <div className='table-block'>
                 <button className='search-button'>Search</button>
@@ -119,9 +119,24 @@ const UserList: React.FC = () => {
 
                                 if (search) {
                                     for (const field in user) {
-                                        if (user[field as keyof typeof user].includes(search)) {
-                                            isShow = true
+                                        let value = user[field as keyof typeof user]
+
+                                        if (Array.isArray(value)) {
+                                            value = value.join(' ')
                                         }
+
+                                        if (typeof value == "string") {
+                                            if (user[field as keyof typeof user].includes(search)) {
+                                                isShow = true
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (search) {
+                                    const searchIndex = parseInt(search)
+                                    if (!Number.isNaN(searchIndex)) {
+                                        isShow = searchIndex === index + 1 ? true : false
                                     }
                                 }
 
