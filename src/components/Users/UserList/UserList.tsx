@@ -118,7 +118,7 @@ const UserList: React.FC = () => {
             {
                 users.getUsers.status !== 'success' ? null :
                     <div className='table-block'>
-                        {/*<button className='search-button'>Search</button>*/}
+                        <button className='adduser-button'>Add User</button>
                         <table>
                             <tbody>
                                 <tr>
