@@ -8,7 +8,6 @@ import NewsList from '../../components/News/NewsList/NewsList'
 import AddNews from '../../components/News/AddNews/AddNews'
 import AdList from '../../components/Ad/AdList/AdList'
 import EditAd from '../../components/Ad/EditAd/EditAd'
-import EditAccount from '../../components/Account/EditAccount'
 
 import SearchIcon from './assets/SearchIcon.svg'
 import SettingsIcon from './assets/SettingsIcon.svg'
