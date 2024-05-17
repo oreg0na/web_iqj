@@ -6,9 +6,11 @@ import dataSlice from './slices/dataSlice'
 import usersSlice from './slices/usersSlice'
 import notificationSlice from './slices/notificationSlice'
 import newsSlice from './slices/newsSlice'
+import adSlice from './slices/adSlice'
 
 export const store = configureStore({
     reducer: {
+        ad: adSlice,
         auth: authSlice,
         data: dataSlice,
         users: usersSlice,
