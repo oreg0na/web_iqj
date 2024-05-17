@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
 import Menu from '../../components/Menu/Menu'
 import EditUser from '../../components/Users/EditUser/EditUser'
+import AddUser from '../../components/Users/AddUser/AddUser'
 import UserList from '../../components/Users/UserList/UserList'
 import EditNews from '../../components/News/EditNews/EditNews'
 import NewsList from '../../components/News/NewsList/NewsList'
@@ -47,6 +48,7 @@ const PanelPage = () => {
                         <Route index element={<Navigate to='list' />} />
                         <Route path='list' element={<UserList />} />
                         <Route path='edit/:uid' element={<EditUser />} />
+                        <Route path='add' element={<AddUser />} />
                     </Route>
                     <Route path='news'>
                         <Route index element={<Navigate to='list' />} />
