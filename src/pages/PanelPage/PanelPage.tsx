@@ -33,7 +33,7 @@ const PanelPage = () => {
                     </div>
                     <div className='user-block'>
                         <div className='settings'>
-                            <img src={SettingsIcon} onClick={() => navigate('/panel/profile/settings')} />
+                            <img src={SettingsIcon} onClick={() => navigate('/panel/user/edit')} />
                         </div>
                         <div className='line'></div>
                         <div className='user'>
@@ -47,22 +47,18 @@ const PanelPage = () => {
                     <Route path='user'>
                         <Route index element={<Navigate to='list' />} />
                         <Route path='list' element={<UserList />} />
-                        <Route path='edit' element={<EditUser />} />
+                        <Route path='edit/:uid' element={<EditUser />} />
                     </Route>
                     <Route path='news'>
                         <Route index element={<Navigate to='list' />} />
                         <Route path='list' element={<NewsList />} />
-                        <Route path='edit' element={<EditNews />} />
+                        <Route path='edit/:id' element={<EditNews />} />
                         <Route path='add' element={<AddNews />} />
-                    </Route>
+                    </Route>    
                     <Route path='ad'>
                         <Route index element={<Navigate to='list' />} />
                         <Route path='list' element={<AdList />} />
-                        <Route path='edit' element={<EditAd />} />
-                    </Route>
-                    <Route path='profile'>
-                        <Route index element={<Navigate to='settings' />} />
-                        <Route path='settings' element={<EditAccount />} />
+                        <Route path='edit/:id' element={<EditAd />} />
                     </Route>
                 </Routes>
             </div>

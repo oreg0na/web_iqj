@@ -5,6 +5,7 @@
         background: #F3F2F7;
         width: 100%;
         padding: 40px 64px;
+        overflow-x: hidden;
 
         .top-line {
             display: flex;
@@ -23,7 +24,7 @@
                     background: #FDFDFD;
                     border: 1px solid #EBEBEB;
                     border-radius: 8px;
-                    width: 100%;
+                    width: 80%;
 
                     &>input {
                         font-family: Barlow;
@@ -50,7 +51,6 @@
                     background: #FF5B5B26;
                     border-radius: 15px;
                     padding: 10px;
-                    margin-left: 200px;
                 }
 
                 .line {
