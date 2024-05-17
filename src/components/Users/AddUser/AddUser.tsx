@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './AddNews.scss'
+import './AddUser.scss'
 
 const AddUser: React.FC = () => {
     return (
