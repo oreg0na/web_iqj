@@ -15,4 +15,17 @@
             line-height: 38.4px;
         }
     }
+
+    .edit-block {
+        margin-top: 28px;
+        width: 962px;
+        height: 558px;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 10px;
+
+        .back-icon {
+            margin-left: 31px;
+            margin-top: 23px;
+        }
+    }
 }
