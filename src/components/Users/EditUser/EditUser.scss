@@ -16,7 +16,24 @@
         }
     }
 
-    .edit-block {
-
+    .fileds {
+        display: flex;
     }
+
+    .fileds-block {
+        display: grid;
+        margin: 50px;
+        width: 412px;
+        height: 50px;
+        radius: 2px;
+        border: 1px solid #C4C4C4;
+    }
+
+    .profile-icon {
+        max-height: 300px;
+        max-width: 300px;
+        border-radius: 63px;
+    }
+
+
 }
