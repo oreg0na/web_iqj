@@ -6,7 +6,7 @@ import PlaceholderIcon from './assets/PlaceholderIcon.jpg'
 
 import './EditUser.scss'
 
-const EditUser: () => void = () => {
+const EditUser: React.FC = () =>  {
     const navigate= useNavigate()
     const { uid } = useParams();
     const [formData, setFormData] = useState({
