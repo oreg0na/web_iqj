@@ -6,7 +6,7 @@ import PlaceholderIcon from './assets/PlaceholderIcon.jpg'
 
 import './EditUser.scss'
 
-const EditUser: React.FC = () => {
+const EditUser: () => void = () => {
     const navigate= useNavigate()
     const { uid } = useParams();
     const [formData, setFormData] = useState({
@@ -25,8 +25,41 @@ const EditUser: React.FC = () => {
     });
 
 
-    function handleChange() {
+    const handleFormSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        const data = {
+            institute: formData?.institute,
+            position: formData?.position,
+            phone: formData?.phone,
+            role: formData?.role,
+            email: formData?.email,
+            lastName: formData?.lastName,
+            firstName: formData?.firstName,
+            patronymic: formData?.patronymic,
+            login: formData?.login,
+            password1: formData?.password1,
+            password2: formData?.password2,
+            password3: formData?.password3,
+        }
 
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        };
+
+        try {
+            const response = await fetch('https://xyz/form-submit', requestOptions)
+            const res = await response.json()
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const { name, value } = e.currentTarget
+        setFormData(prevState => ({ ...prevState, [name]: value }))
     }
 
     return (
